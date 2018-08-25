@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    {% block head %}
+    <title></title>
+    {% endblock %}
+  </head>
+  <body>
+    <br>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Social Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          {% if user.is_authenticated %}
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/home">Home</a>
+            <a class="nav-item nav-link" href="/accounts/logout">Logout</a>
+            <a class="nav-item nav-link" href="/accounts/profile">Profile</a>
+            <a class="nav-item nav-link" href="/accounts/profile/edit">Edit Profile</a>
+            <a class="nav-item nav-link" href="/accounts/change-password">Change Password</a>
+          {% else %}
+            <div class="navbar-nav navbar-right">
+              <a class="nav-item nav-link" href="/accounts/reset-password">Reset Password</a>
+              <a class="nav-item nav-link default" href="/accounts/login">Login</a>
+              <a class="nav-item nav-link default" href="/accounts/register">Register</a>
+            </div>
+          {% endif %}
+          </div>
+        </div>
+      </nav>
+    </div>
+    {% block body %}
+    <h1>base</h1>
+    {% endblock %}
+  </body>
+</html>
